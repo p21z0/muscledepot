@@ -27,7 +27,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
         </span>
             </a>
         &nbsp;&nbsp;&nbsp;
-        <a href="account_manage.php?id=<?= $id?>" class="btn btn-danger btn-icon-split btn-md">
+        <a href="index.php" class="btn btn-danger btn-icon-split btn-md">
         <span class="icon text-white-50">
         <i class="fa-solid fa-xmark"></i>
     </span>

@@ -94,10 +94,10 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
 
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="user_subscriptions.php?id=<?= $user_id?>">All</a>
+                    <a class="nav-link" href="user_subscriptions.php?id=<?= $user_id?>">All</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user_subscriptions_active.php?id=<?= $user_id?>">Active</a>
+                    <a class="nav-link active" href="user_subscriptions_active.php?id=<?= $user_id?>">Active</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="user_subscriptions_lastday.php?id=<?= $user_id?>">Last day</a>
@@ -142,7 +142,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                             <?php
                                 // echo $date_today=date('Y-m-d');
                                 $table_name="tbl_subscription";
-                                $user_data=get_where_custom($table_name, "user_id", $user_id);
+                                $user_data=get_where_double($table_name, "user_id", $user_id, "subscription_status", "Active");
                                 foreach ($user_data as $key => $row) {
                                     $subscription_id=$row['subscription_id'];
                                     $subscription_name=$row['subscription_name'];

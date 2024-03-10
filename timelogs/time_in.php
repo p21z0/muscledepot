@@ -1,6 +1,7 @@
 <?php
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
 date_default_timezone_set("Asia/Singapore");
+include ("../users/checker_user.php");
 echo $now = date("Y-m-d H:i:s");
 ?>
 <!DOCTYPE html>
@@ -16,7 +17,7 @@ echo $now = date("Y-m-d H:i:s");
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
 <body>
-  <h1>TIME OUT</h1>
+  <h1>TIME IN</h1>
   <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -27,17 +28,19 @@ echo $now = date("Y-m-d H:i:s");
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Log ID</th>
+              <th>&nbsp;</th>
               <th>Name</th>
-              <th>QR Code</th>
+              <!-- <th>QR Code</th> -->
+              <th>Status</th>
               <th>Time in</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>Log ID</th>
+              <th>&nbsp;</th>
               <th>Name</th>
-              <th>QR Code</th>
+              <!-- <th>QR Code</th> -->
+              <th>Status</th>
               <th>Time in</th>
             </tr>
           </tfoot>
@@ -62,11 +65,19 @@ echo $now = date("Y-m-d H:i:s");
                 foreach ($user_data as $key => $row){
                   $firstname=$row['firstname'];
                   $lastname=$row['lastname'];
+                  $user_status=$row['user_status'];
+
+                  if ($user_status=="1"){
+                    $user_status_print="Active";
+                  } else {
+                    $user_status_print="Inactive";
+                  }
             ?>
                   <tr>
                     <td><?= $log_id?></td>
                     <td><?= $firstname." ".$lastname?></td>
-                    <td><?= $reference?></td>
+                    <!-- <td><?= $reference?></td> -->
+                    <td><?= $user_status_print?></td>
                     <td><?= $time_day." ".$time_hour?></td>
                   </tr>
             <?php

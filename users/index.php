@@ -3,7 +3,8 @@
 // include ($_SERVER['DOCUMENT_ROOT']."/muscledepot/assets/css/sb-admin-2.min.css");
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
-
+// ec$checker_user_url=base_url()."users/checker_user.php";
+include ("checker_user.php");
 ?>
 
 <div class="container-fluid">
@@ -44,11 +45,11 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                     </span>
                 </a>
 
-                <button onclick="quorum_print()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                    <i class="fas fa-file-invoice fa-sm text-white-50 p-1"></i> Generate document </button>
+                <!-- <button onclick="quorum_print()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-file-invoice fa-sm text-white-50 p-1"></i> Generate document </button> WIP -->
                 <script>
                     function quorum_print() {
-                    window.open("<?= base_url() ?>organizations/orgs_print");
+                    window.open("<?= base_url() ?>users/user_print");
                     } 
                 </script>
 
@@ -134,12 +135,21 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                     <td><?= $user_status?></td>
 
                                     <td>
-                                        <a href="user_change_password.php?id=<?= $user_id?>" class="btn btn-info btn-icon-split btn-md">
+                                        <!-- <a href="user_change_password.php?id=<?= $user_id?>" class="btn btn-info btn-icon-split btn-md">
                                         <span class="icon text-red-50">
                                         <i class="fa-solid fa-key"></i>
                                         </span>
                                         <span class="text">
                                                 Change Password
+                                            </span>
+                                        </a> -->
+
+                                        <a href="../subscriptions/user_subscriptions.php?id=<?= $user_id?>" class="btn btn-success btn-icon-split btn-md">
+                                            <span class="icon text-red-50">
+                                                <i class="fa-solid fa-dumbbell"></i>
+                                            </span>
+                                            <span class="text">
+                                                Subscriptions
                                             </span>
                                         </a>
 
@@ -151,16 +161,16 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                                 Edit
                                             </span>
                                         </a>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <a href="user_delete.php?id=<?= $user_id?>" class="btn btn-danger btn-icon-split btn-md">
-                                    <span class="icon text-red-50">
-                                    <i class="far fa-trash-alt"></i>
-                                    </span>
-                                    <span class="text">
-                                        Delete
-                                    </span>
+                                    
+                                        <a href="user_delete.php?id=<?= $user_id?>" class="btn btn-danger btn-icon-split btn-md">
+                                            <span class="icon text-red-50">
+                                            <i class="far fa-trash-alt"></i>
+                                            </span>
+                                            <span class="text">
+                                                Delete
+                                            </span>
                                         </a>
-                                        </a>
+                                        
                                     </td>
                                 </tr>
 

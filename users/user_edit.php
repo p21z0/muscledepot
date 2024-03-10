@@ -19,10 +19,10 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
         $lastname=$row['lastname'];
         $birthdate=$row['birthdate'];
         $contact_no=$row['contact_no'];
-    $gender=$row['gender'];
+        $gender=$row['gender'];
         $user_type=$row['user_type'];
     }
- echo $firstname. $lastname;
+//  echo $firstname. $lastname;
 ?>
 
 <div align=center>
@@ -45,7 +45,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
 
                 <input type="date" name="birthdate" value=<?=$birthdate?> class="form-control form-control-user add-input" autocomplete=off placeholder="Birthdate" required>
 
-                <input type="number" name="contact_no" value="<?=$contact_no?>" class="form-control form-control-user add-input" autocomplete=off placeholder="Contact number (Mobile)" required>
+                <input type="number" name="contact_no" value="0<?=$contact_no?>" class="form-control form-control-user add-input" autocomplete=off placeholder="Contact number (Mobile)" required>
 
                 <!-- <input type="date" name="gender" class="form-control form-control-user add-input" autocomplete=off placeholder="Gender" required> -->
 

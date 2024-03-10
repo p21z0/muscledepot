@@ -11,7 +11,7 @@
         foreach($user_id_fetch as $key => $row){
             $user_id=$row['user_id'];
             $firstname=$row['firstname'];
-            $message = "Hi gago ka. tang ina mo Creak, Carl judd and ".$firstname. "Pakyu pakyu";
+            $message = "Hi ".$firstname. ", your time in has been recorded. Welcome to Muscle Depot. Sheesh!";
 
             $table_name = "tbl_timelogs";
             $timelog_type = "time in";

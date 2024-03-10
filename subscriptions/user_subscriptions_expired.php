@@ -1,6 +1,6 @@
     <!-- NEED TO ADD IN TBL USER: LINK TO EDIT AND (DELETE FOR ADMIN ONLY) -->
     <!-- NEED TO ADD IN TBL SUBS: CRUD; PRINT, WHERE TBL_SUBS.USER_ID == TBL_USER.USER_ID -->
-<?php
+    <?php
 // include ($_SERVER['DOCUMENT_ROOT']."/muscledepot/assets/css/sb-admin-2.min.css");
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
@@ -94,7 +94,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
 
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="user_subscriptions.php?id=<?= $user_id?>">All</a>
+                    <a class="nav-link" href="user_subscriptions.php?id=<?= $user_id?>">All</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="user_subscriptions_active.php?id=<?= $user_id?>">Active</a>
@@ -106,7 +106,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                     <a class="nav-link" href="user_subscriptions_earlybird.php?id=<?= $user_id?>">Early bird</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user_subscriptions_expired.php?id=<?= $user_id?>">Expired</a>
+                    <a class="nav-link active" href="user_subscriptions_expired.php?id=<?= $user_id?>">Expired</a>
                 </li>
             </ul>
             <br>
@@ -142,7 +142,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                             <?php
                                 // echo $date_today=date('Y-m-d');
                                 $table_name="tbl_subscription";
-                                $user_data=get_where_custom($table_name, "user_id", $user_id);
+                                $user_data=get_where_double($table_name, "user_id", $user_id, "subscription_status", "Expired");
                                 foreach ($user_data as $key => $row) {
                                     $subscription_id=$row['subscription_id'];
                                     $subscription_name=$row['subscription_name'];
