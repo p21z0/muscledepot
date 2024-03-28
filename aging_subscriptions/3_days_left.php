@@ -1,91 +1,15 @@
     <!-- NEED TO ADD IN TBL USER: LINK TO EDIT AND (DELETE FOR ADMIN ONLY) -->
     <!-- NEED TO ADD IN TBL SUBS: CRUD; PRINT, WHERE TBL_SUBS.USER_ID == TBL_USER.USER_ID -->
-<?php
+    <?php
 // include ($_SERVER['DOCUMENT_ROOT']."/muscledepot/assets/css/sb-admin-2.min.css");
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
-
+include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/test/countdown.php");
+$user_id="4";
 ?>
 
 <div class="container-fluid">
 
-<div class="card"  style="min-height: 960px;">
-    <img src="https://via.placeholder.com/1080x250" class="card-img-top " alt="...">
-    <div class="card-body">
-    <div class="row">
-        <?php
-
-        $table_name="tbl_users";
-        $user_id=$_GET['id'];
-
-        $user_data=get_where_custom($table_name, "user_id", $user_id);
-
-        foreach ($user_data as $key => $row){
-            $user_id=$row['user_id'];
-            $user_qr=$row['user_qr'];
-            $user_pic=$row['user_pic'];
-            $username=$row['username'];
-            $user_type=$row['user_type'];
-            $firstname=$row['firstname'];
-            $lastname=$row['lastname'];
-            $birthdate=$row['birthdate'];
-            $gender=$row['gender'];
-            $user_status=$row['user_status'];
-
-            if ($user_type == "1") {
-                $user_type = "Member";
-            } elseif ($user_type == "0"){
-                $user_type = "Admin";
-            } else {
-                $user_type = "Undetermined";
-            }
-
-            if ($gender == "m") {
-                $gender = "Male";
-            } elseif ($gender == "f"){
-                $gender = "Female";
-            } else {
-                $gender = "Undetermined";
-            }
-
-            if ($user_status == "1") {
-                $user_status = "Active";
-            } elseif ($user_status == "0"){
-                $user_status = "Inactive";
-            } else {
-                $user_status = "Undetermined";
-            }
-
-        ?>
-            <div class="col-2">
-                <!-- <img src="https://via.placeholder.com/250x250/ff0000/000000" class="card-img-top dp-pic" alt="..."> -->
-                <img src="https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=<?= $user_qr?>" class="card-img-top dp-pic" alt="...">
-                
-            </div>
-            <div class="col-8 ml-4">
-            
-                <h2 class="card-title"><?= $firstname." ".$lastname ?></h2>
-                <p class="card-text org-desc-head">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-                </p>
-                <a href="subscription_add.php?id=<?=$user_id?>" class="btn btn-primary">Add subscription</a>
-                <!-- <a href="" class="btn btn-info">View attendance</a> WIP-->
-
-                <!-- not really needed here-->
-                <!-- <a href="../users/user_edit.php?id=<?=$user_id?>" class="btn btn-warning">Edit details</a>
-                <a href="../users/user_delete.php?id<?=$user_id?>" class="btn btn-danger">Delete User</a> -->
-
-            </div>
-        <?php
-        }
-        ?>
-        
-    </div>
-
-    <div>
-    </div>
-</div>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Subscriptions</h6>
@@ -94,20 +18,20 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
 
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="user_subscriptions.php?id=<?= $user_id?>">All</a>
+                    <a class="nav-link" href="last_day.php">Last day</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user_subscriptions_active.php?id=<?= $user_id?>">Active</a>
+                    <a class="nav-link active" href="3_days_left.php">3 days left</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user_subscriptions_lastday.php?id=<?= $user_id?>">Last day</a>
+                    <a class="nav-link" href="7_days_left.php">7 days left</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="user_subscriptions_earlybird.php?id=<?= $user_id?>">Early bird</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="user_subscriptions_expired.php?id=<?= $user_id?>">Expired</a>
-                </li>
+                </li> -->
             </ul>
             <br>
 
@@ -119,10 +43,10 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                 <th>&nbsp;</th>
                                 <th>Subscription Name</th>
                                 <th>Price</th>
-                                <th>PT</th>
                                 <th>Subscription Start</th>
                                 <th>Subscription End</th>
                                 <th>Subscription Status</th>
+                                <th>Expiring in</th>
                                 <th>Options</th>
                                 <!-- <th>Subscription Type</th> -->
                             </tr>
@@ -132,10 +56,10 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                 <th>&nbsp;</th>
                                 <th>Subscription Name</th>
                                 <th>Price</th>
-                                <th>PT</th>
                                 <th>Subscription Start</th>
                                 <th>Subscription End</th>
                                 <th>Subscription Status</th>
+                                <th>Expiring in</th>
                                 <th>Options</th>
                                 <!-- <th>Subscription Type</th> -->
                             </tr>
@@ -144,17 +68,19 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                             <?php
                                 // echo $date_today=date('Y-m-d');
                                 $table_name="tbl_subscription";
-                                $user_data=get_where_custom($table_name, "user_id", $user_id);
+                                $user_data=get_where_custom($table_name, "reminder_status", "3");
                                 foreach ($user_data as $key => $row) {
                                     $subscription_id=$row['subscription_id'];
                                     $subscription_name=$row['subscription_name'];
                                     $amount=$row['amount'];
-                                    $pt_count=$row['pt_count'];
                                     $user_id=$row['user_id'];
                                     $subscription_type=$row['subscription_type'];
                                     $subscription_start=$row['subscription_start'];
                                     $subscription_end=$row['subscription_end'];
                                     $subscription_status=$row['subscription_status'];
+
+                                    $remaining = (strtotime($subscription_end)) - time();
+                                    $days_remaining = floor($remaining / 86400) +2;
         
                             ?>
 
@@ -162,10 +88,16 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                     <td><?= $subscription_id?></td>
                                     <td><?= $subscription_name?></td>
                                     <td><?= $amount?></td>
-                                    <td><?= $pt_count?></td>
                                     <td><?= $subscription_start?></td>
                                     <td><?= $subscription_end?></td>
                                     <td><?= $subscription_status?></td>
+                                    <!-- <td><?= $subscription_status?></td> -->
+
+                                    <?php if ($remaining>0){?>
+                                        <td><?= $days_remaining?> days left</td>
+                                    <?php } elseif ($remaining<0){?>
+                                        <td class="text-danger font-weight-bold"><?= abs($days_remaining)?> days ago</td>
+                                    <?php } ?>
                                     <td>
                                     <a href="subscription_edit.php?id=<?= $subscription_id?>&id2=<?= $user_id?>" class="btn btn-warning btn-icon-split btn-md">
                                         <span class="icon text-red-50">
@@ -186,7 +118,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                     </a>
 
                                     </td>
-                                    <!-- <td><?php//include ("checker_subscription.php");?></td> -->
+                                    <!-- <td><?php include ("checker_subscription.php");?></td> -->
                                 </tr>
 
                             <?php

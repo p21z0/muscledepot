@@ -16,6 +16,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
         $subscription_id=$row['subscription_id'];
         $subscription_name=$row['subscription_name'];
         $amount=$row['amount'];
+        $pt_count=$row['pt_count'];
         $user_id=$row['user_id'];
         $subscription_type=$row['subscription_type'];
         $subscription_start=$row['subscription_start'];
@@ -35,6 +36,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
             <div class="" style="">
                 <input type="text" name="sub_name" class="form-control form-control-user add-input" autocomplete=off placeholder="Subscription name" value="<?= $subscription_name?>" required>
                 <input type="number" name="amount" class="form-control form-control-user add-input" autocomplete=off placeholder="Amount" value="<?= $amount?>" required>
+                <input type="number" name="pt_count" class="form-control form-control-user add-input" autocomplete=off placeholder="Amount" value="<?= $pt_count?>" required>
                 <input type="date" name="startdate" class="form-control form-control-user add-input" autocomplete=off placeholder="Start date" value="<?= $subscription_start?>" required>
                 <input type="date" name="enddate" class="form-control form-control-user add-input" autocomplete=off placeholder="End date" value="<?=$subscription_end?>" required>
                 <!-- <input type="text" name="sub_description" class="form-control form-control-user add-input" autocomplete=off placeholder="Description" required> -->

@@ -1,11 +1,5 @@
 <?php
-$qr="https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=20240224-CE64103E8B"
+include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
+// $total_sum=0;
 
-?>
-
-
-<div class="col-4">
-    <a href="<?=$qr?>" target="_blank">
-        <img src="<?=$qr?>" alt="" style="text-align:left; width: 30%;" class="mt-4">
-    </a>
-</div>
+echo $total_sum=sum_where("tbl_subscription", "pt_count", "user_id", "4");

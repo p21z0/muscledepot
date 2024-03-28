@@ -9,6 +9,7 @@ $header_location="Location: user_subscriptions.php?id=".urlencode($user_id);
 
 $sub_name=$_POST['sub_name'];
 $amount=$_POST['amount'];
+$pt_count=$_POST['pt_count'];
 $startdate=$_POST['startdate'];
 $enddate=$_POST['enddate'];
 
@@ -17,7 +18,7 @@ $amount =$_POST['amount'];
 // $sub_description=$_POST['sub_description'];
 $subscription_type="Custom";
 
-echo $startdate."<br>".$enddate;
+// echo $startdate."<br>".$enddate;
 
 if ($enddate < $startdate)
 {
@@ -29,12 +30,18 @@ if ($enddate < $startdate)
         "subscription_name" => $sub_name,
         "user_id" => $user_id ,
         "amount" => $amount ,
+        "pt_count" => $pt_count ,
         "subscription_type" => $subscription_type,
         "subscription_start" => $startdate ,
         "subscription_end" => $enddate
     );
 
     echo insert($subscription_data, $table_name);
+    echo "<br>";
+    include("../checker/countdown_subscription.php");
+    echo "--------------------------------------------------------------------<br>";
+    include("../checker/checker_subscription.php");
+    echo "--------------------------------------------------------------------<br>";
 }
 
 header("Location: user_subscriptions.php?id=".urlencode($user_id));

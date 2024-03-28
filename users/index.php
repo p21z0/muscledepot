@@ -4,7 +4,7 @@
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
 // ec$checker_user_url=base_url()."users/checker_user.php";
-include ("checker_user.php");
+// include ("checker_user.php");
 ?>
 
 <div class="container-fluid">
@@ -102,6 +102,8 @@ include ("checker_user.php");
                                             $user_type = "Member";
                                         } elseif ($user_type == "0"){
                                             $user_type = "Admin";
+                                        } elseif ($user_type == "2"){
+                                            $user_type = "Non-member";
                                         } else {
                                             $user_type = "Undetermined";
                                         }
@@ -150,6 +152,15 @@ include ("checker_user.php");
                                             </span>
                                             <span class="text">
                                                 Subscriptions
+                                            </span>
+                                        </a>
+
+                                        <a href="../training/training_manage.php?id=<?= $user_id?>" class="btn btn-info btn-icon-split btn-md">
+                                            <span class="icon text-red-50">
+                                                <i class="fa-solid fa-dumbbell"></i>
+                                            </span>
+                                            <span class="text">
+                                                Personal Training
                                             </span>
                                         </a>
 

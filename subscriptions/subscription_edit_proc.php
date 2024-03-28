@@ -13,6 +13,7 @@
     
     $sub_name=$_POST['sub_name'];
     $amount=$_POST['amount'];
+    $pt_count=$_POST['pt_count'];
     $startdate=$_POST['startdate'];
     $enddate=$_POST['enddate'];
 	
@@ -20,6 +21,7 @@
         "subscription_name" => $sub_name,
         // "user_id" => $user_id ,
         "amount" => $amount ,
+        "pt_count" => $pt_count ,
         // "subscription_type" => $subscription_type,
         "subscription_start" => $startdate ,
         "subscription_end" => $enddate
