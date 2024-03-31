@@ -1,8 +1,8 @@
 <?php
 echo "Countdown membership<br>";
-// include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
+include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
 date_default_timezone_set("Asia/Singapore");
-
+include("../mailing/mailing_header.php");
 $date = strtotime(date("Y-m-d H:i:s"));
 
 $table_name="tbl_users";
@@ -16,6 +16,7 @@ foreach ($membership_data as $key => $row) {
     $user_type=$row['user_type'];
     $firstname=$row['firstname'];
     $lastname=$row['lastname'];
+    $email_address=$row['email_address'];
     $birthdate=$row['birthdate'];
     $gender=$row['gender'];
     $user_status=$row['user_status'];
@@ -33,6 +34,12 @@ foreach ($membership_data as $key => $row) {
                 print_r($membership_editedValues);
                 echo $membership_expiry."***".$days_remaining."<br>";
                 update_from($membership_editedValues, $user_id, $table_name, $column);
+                // NEED TO FIRE A NEW GET FUNCTION SPECIFIC FOR UPDATED VALUE OF REMINDER STATUS
+                $membership_data2=get_where_custom($table_name, $column, $user_id);
+                foreach ($membership_data2 as $key => $row) {
+                    $reminder_status=$row['reminder_status'];
+                    include ("../mailing/send_membership_notice.php");
+                }
             } else {    
                 echo $membership_expiry." | skip update | ".$reminder_status." - ".$status_change_checker."<br>";
                 echo (floor($remaining/86400)+2)."<br>";
@@ -44,6 +51,12 @@ foreach ($membership_data as $key => $row) {
                 print_r($membership_editedValues);
                 echo $membership_expiry."***".$days_remaining."<br>";
                 update_from($membership_editedValues, $user_id, $table_name, $column);
+                // NEED TO FIRE A NEW GET FUNCTION SPECIFIC FOR UPDATED VALUE OF REMINDER STATUS
+                $membership_data2=get_where_custom($table_name, $column, $user_id);
+                foreach ($membership_data2 as $key => $row) {
+                    $reminder_status=$row['reminder_status'];
+                    include ("../mailing/send_membership_notice.php");
+                }
             } else {
                 echo $membership_expiry." | skip update | ".$reminder_status." - ".$status_change_checker."<br>";
                 echo (floor($remaining/86400)+2)."<br>";
@@ -55,6 +68,12 @@ foreach ($membership_data as $key => $row) {
                 print_r($membership_editedValues);
                 echo $membership_expiry."***".$days_remaining."<br>";
                 update_from($membership_editedValues, $user_id, $table_name, $column);
+                // NEED TO FIRE A NEW GET FUNCTION SPECIFIC FOR UPDATED VALUE OF REMINDER STATUS
+                $membership_data2=get_where_custom($table_name, $column, $user_id);
+                foreach ($membership_data2 as $key => $row) {
+                    $reminder_status=$row['reminder_status'];
+                    include ("../mailing/send_membership_notice.php");
+                }
             } else {
                 echo $membership_expiry." | skip update | ".$reminder_status." - ".$status_change_checker."<br>";
                 echo (floor($remaining/86400)+2)."<br>";
@@ -66,6 +85,12 @@ foreach ($membership_data as $key => $row) {
                 print_r($membership_editedValues);
                 echo $membership_expiry."***".$days_remaining."<br>";
                 update_from($membership_editedValues, $user_id, $table_name, $column);
+                // NEED TO FIRE A NEW GET FUNCTION SPECIFIC FOR UPDATED VALUE OF REMINDER STATUS
+                $membership_data2=get_where_custom($table_name, $column, $user_id);
+                foreach ($membership_data2 as $key => $row) {
+                    $reminder_status=$row['reminder_status'];
+                    include ("../mailing/send_membership_notice.php");
+                }
             } else {
                 echo $membership_expiry." | skip update | ".$reminder_status." - ".$status_change_checker."<br>";
                 echo (floor($remaining/86400)+2)."<br>";    
@@ -77,6 +102,12 @@ foreach ($membership_data as $key => $row) {
                 print_r($membership_editedValues);
                 echo $membership_expiry."***".$days_remaining."<br>";
                 update_from($membership_editedValues, $user_id, $table_name, $column);
+                // NEED TO FIRE A NEW GET FUNCTION SPECIFIC FOR UPDATED VALUE OF REMINDER STATUS
+                $membership_data2=get_where_custom($table_name, $column, $user_id);
+                foreach ($membership_data2 as $key => $row) {
+                    $reminder_status=$row['reminder_status'];
+                    include ("../mailing/send_membership_notice.php");
+                }
             } else {
                 echo $membership_expiry." | skip update | ".$reminder_status." - ".$status_change_checker."<br>";
                 echo (floor($remaining/86400)+2)."<br>";
