@@ -1,10 +1,11 @@
-<?php
+    <?php
 
 session_start();
-include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
 
 $table_name = "tbl_subscription";
 $user_id=$_GET['id'];
+$user_id_1=$_GET['id'];
 $header_location="Location: user_subscriptions.php?id=".urlencode($user_id);
 
 $sub_name=$_POST['sub_name'];
@@ -42,7 +43,9 @@ if ($enddate < $startdate)
     echo "--------------------------------------------------------------------<br>";
     include("../checker/checker_subscription.php");
     echo "--------------------------------------------------------------------<br>";
+    include("../mailing/send_subscription_success.php");
+    include("../checker/checker_user.php");
 }
-
-header("Location: user_subscriptions.php?id=".urlencode($user_id));
+echo $user_id;
+header("Location: user_subscriptions.php?id=".urlencode($user_id_1));
 ?>

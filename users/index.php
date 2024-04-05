@@ -21,7 +21,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
             </div>
             <div class="card-body">
 
-                <form method=post action="user_search.php" autocomplete="off"
+                <!-- <form method=post action="user_search.php" autocomplete="off"
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search w-25">
 
                     <div class="input-group">
@@ -34,7 +34,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> -->
 
                 <a href="user_add.php" class="btn btn-secondary btn-icon-split add-item" style="margin-top:-1px">
                     <span class="icon text-white-50">
@@ -58,26 +58,28 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th>Username</th>
-                                <th>User type</th>
+                                <!-- <th>Username</th>
+                                <th>User type</th> -->
                                 <th>Name</th>
-                                <th>Birthdate</th>
-                                <th>Gender</th>
+                                <th>Contact No.</th>
+                                <th>Email address</th>
                                 <th>Privilege</th>
                                 <th>Status</th>
+                                <th>Membership Expiry</th>
                                 <th>Options</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th>Username</th>
-                                <th>User type</th>
+                                <!-- <th>Username</th>
+                                <th>User type</th> -->
                                 <th>Name</th>
-                                <th>Birthdate</th>
-                                <th>Gender</th>
+                                <th>Contact No.</th>
+                                <th>Email address</th>
                                 <th>Privilege</th>
                                 <th>Status</th>
+                                <th>Membership Expiry</th>
                                 <th>Options</th>
                             </tr>
                         </tfoot>
@@ -91,13 +93,19 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                     $user_id=$row['user_id'];
                                     $user_pic=$row['user_pic'];
                                     $username=$row['username'];
-                                    $user_type=$row['user_type'];
+                                    
                                     $firstname=$row['firstname'];
                                     $lastname=$row['lastname'];
                                     $birthdate=$row['birthdate'];
-                                    $gender=$row['gender'];
-                                    $user_status=$row['user_status'];
-
+                                    $contact_no=$row['contact_no'];
+                                        if ($contact_no==="0"){
+                                            $contact_no="N/A";
+                                        } 
+                                    $email_address=$row['email_address'];
+                                        if ($email_address===""){
+                                            $email_address="N/A";
+                                        }
+                                    $user_type=$row['user_type'];
                                         if ($user_type == "1") {
                                             $user_type = "Member";
                                         } elseif ($user_type == "0"){
@@ -107,7 +115,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                         } else {
                                             $user_type = "Undetermined";
                                         }
-
+                                    $gender=$row['gender'];
                                         if ($gender == "m") {
                                             $gender = "Male";
                                         } elseif ($gender == "f"){
@@ -115,7 +123,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                         } else {
                                             $gender = "Undetermined";
                                         }
-
+                                    $user_status=$row['user_status'];
                                         if ($user_status == "1") {
                                             $user_status = "Active";
                                         } elseif ($user_status == "0"){
@@ -123,19 +131,24 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                         } else {
                                             $user_status = "Undetermined";
                                         }
+                                    $membership_expiry=$row['membership_expiry'];
+                                    if ($membership_expiry==""){
+                                        $membership_expiry="N/A";
+                                    }
 
                             ?>
 
                                 <tr>
                                     <td><?= $user_pic?></td>
-                                    <td><?= $username?></td>
-                                    <td><?= $user_type?></td>
+                                    <!-- <td><?= $username?></td>
+                                    <td><?= $user_type?></td> -->
                                     <td><?= $firstname." ".$lastname?></td>
-                                    <td><?= $birthdate?></td>
-                                    <td><?= $gender?></td>
+                                    <!-- <td><?= $birthdate?></td> -->
+                                    <td><?= $contact_no?></td>
+                                    <td><?= $email_address?></td>
                                     <td><?= $user_type?></td>
                                     <td><?= $user_status?></td>
-
+                                    <td><?=$membership_expiry?></td>
                                     <td>
                                         <!-- <a href="user_change_password.php?id=<?= $user_id?>" class="btn btn-info btn-icon-split btn-md">
                                         <span class="icon text-red-50">
@@ -146,7 +159,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                             </span>
                                         </a> -->
 
-                                        <a href="../subscriptions/user_subscriptions.php?id=<?= $user_id?>" class="btn btn-success btn-icon-split btn-md">
+                                        <a href="../subscriptions/user_subscriptions?id=<?= $user_id?>" class="btn btn-success btn-icon-split btn-md">
                                             <span class="icon text-red-50">
                                                 <i class="fa-solid fa-dumbbell"></i>
                                             </span>
@@ -155,7 +168,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                             </span>
                                         </a>
 
-                                        <a href="../training/training_manage.php?id=<?= $user_id?>" class="btn btn-info btn-icon-split btn-md">
+                                        <a href="../training/training_manage?id=<?= $user_id?>" class="btn btn-info btn-icon-split btn-md">
                                             <span class="icon text-red-50">
                                                 <i class="fa-solid fa-dumbbell"></i>
                                             </span>
@@ -164,7 +177,16 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                             </span>
                                         </a>
 
-                                        <a href="user_edit.php?id=<?= $user_id?>" class="btn btn-warning btn-icon-split btn-md">
+                                        <a href="../mailing/send_qr_user?id=<?= $user_id?>" class="btn btn-dark btn-icon-split btn-md">
+                                            <span class="icon text-red-50">
+                                                <i class="fa-solid fa-dumbbell"></i>
+                                            </span>
+                                            <span class="text">
+                                                Send QR
+                                            </span>
+                                        </a>
+
+                                        <a href="user_edit?id=<?= $user_id?>" class="btn btn-warning btn-icon-split btn-md">
                                         <span class="icon text-red-50">
                                         <i class="far fa-edit"></i>
                                         </span>
@@ -173,7 +195,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                             </span>
                                         </a>
                                     
-                                        <a href="user_delete.php?id=<?= $user_id?>" class="btn btn-danger btn-icon-split btn-md">
+                                        <a href="user_delete?id=<?= $user_id?>" class="btn btn-danger btn-icon-split btn-md">
                                             <span class="icon text-red-50">
                                             <i class="far fa-trash-alt"></i>
                                             </span>

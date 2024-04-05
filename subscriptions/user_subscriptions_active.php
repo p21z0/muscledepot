@@ -59,7 +59,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
         ?>
             <div class="col-2">
                 <!-- <img src="https://via.placeholder.com/250x250/ff0000/000000" class="card-img-top dp-pic" alt="..."> -->
-                <img src="https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=<?= $user_qr?>" class="card-img-top dp-pic" alt="...">
+                <img src="https://quickchart.io/qr?text=<?= $user_qr?>" class="card-img-top dp-pic" alt="...">
                 
             </div>
             <div class="col-8 ml-4">
@@ -94,19 +94,19 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
 
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="user_subscriptions.php?id=<?= $user_id?>">All</a>
+                    <a class="nav-link" href="user_subscriptions?id=<?= $user_id?>">All</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="user_subscriptions_active.php?id=<?= $user_id?>">Active</a>
+                    <a class="nav-link active" href="user_subscriptions_active?id=<?= $user_id?>">Active</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user_subscriptions_lastday.php?id=<?= $user_id?>">Last day</a>
+                    <a class="nav-link" href="user_subscriptions_lastday?id=<?= $user_id?>">Last day</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user_subscriptions_earlybird.php?id=<?= $user_id?>">Early bird</a>
+                    <a class="nav-link" href="user_subscriptions_earlybird?id=<?= $user_id?>">Early bird</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user_subscriptions_expired.php?id=<?= $user_id?>">Expired</a>
+                    <a class="nav-link" href="user_subscriptions_expired?id=<?= $user_id?>">Expired</a>
                 </li>
             </ul>
             <br>
@@ -164,7 +164,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                     <td><?= $subscription_status?></td>
                                     <!-- <td><?= $subscription_status?></td> -->
                                     <td>
-                                    <a href="subscription_edit.php?id=<?= $subscription_id?>&id2=<?= $user_id?>" class="btn btn-warning btn-icon-split btn-md">
+                                    <a href="subscription_edit?id=<?= $subscription_id?>&id2=<?= $user_id?>" class="btn btn-warning btn-icon-split btn-md">
                                         <span class="icon text-red-50">
                                         <i class="far fa-edit"></i>
                                         </span>
@@ -173,7 +173,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                             </span>
                                     </a>
                                     
-                                    <a href="subscription_delete.php?id=<?= $subscription_id?>&id2=<?= $user_id?>" class="btn btn-danger btn-icon-split btn-md">
+                                    <a href="subscription_delete?id=<?= $subscription_id?>&id2=<?= $user_id?>" class="btn btn-danger btn-icon-split btn-md">
                                         <span class="icon text-red-50">
                                         <i class="far fa-trash-alt"></i>
                                         </span>

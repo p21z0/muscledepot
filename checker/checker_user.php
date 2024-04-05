@@ -1,5 +1,7 @@
 <?php
-    echo "Checker user<br>";
+    // echo "Checker user<br>";
+    // include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
+
     $user_data=get("tbl_users");
     foreach ($user_data as $key => $row) 
     {
@@ -9,21 +11,21 @@
         $active_subs_count=active_subs_count($user_id);
         if ($active_subs_count > 0)
         {
-            if ($user_status==0){
+            if (($user_status==0) or ($user_status=="")){
                 $user_editedValues=array("user_status" => "1");
-                print_r($user_editedValues);
-                echo $active_subs_count."***".$user_status."<br>";
+                // print_r($user_editedValues);
+                // echo $active_subs_count."***".$user_status."<br>";
                 update_from($user_editedValues, $user_id, "tbl_users", "user_id");
             } else {
-                echo $user_id." | skip update | count: ".$active_subs_count." - status: ".$user_status."<br>";
+                // echo $user_id." | skip update | count: ".$active_subs_count." - status: ".$user_status."<br>";
             }
         } else
         {
-            if ($user_status==1){
+            if (($user_status==1) or ($user_status=="")){
                 $user_editedValues=array("user_status" => "0");
                 update_from($user_editedValues, $user_id, "tbl_users", "user_id");
             } else {
-                echo $user_id." | skip update | count: ".$active_subs_count." - status: ".$user_status."<br>";
+                // echo $user_id." | skip update | count: ".$active_subs_count." - status: ".$user_status."<br>";
             }
         }
     }

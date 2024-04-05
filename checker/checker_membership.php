@@ -1,5 +1,5 @@
 <?php
-echo "Checker membership<br>";
+// echo "Checker membership<br>";
 // include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
 date_default_timezone_set("Asia/Singapore");
 
@@ -25,12 +25,12 @@ foreach ($membership_data as $key => $row) {
 
     if (($user_type=="1") and ($date_today > $membership_expiry)){
         $membership_editedValues=array("user_type" => "2");
-        echo " ".$user_id.":: ".$user_type." | ".$membership_expiry;
-        print_r($membership_editedValues);
-        echo "<br>";
+        // echo " ".$user_id.":: ".$user_type." | ".$membership_expiry;
+        // print_r($membership_editedValues);
+        // echo "<br>";
         update_from($membership_editedValues, $user_id, $table_name, $column);
     } else {
-        echo $user_id.":: skip update | ".$user_type." | ".$membership_expiry."<br>";
+        // echo $user_id.":: skip update | ".$user_type." | ".$membership_expiry."<br>";
     }
 
 };

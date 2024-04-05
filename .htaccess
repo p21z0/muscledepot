@@ -1,0 +1,26 @@
+RewriteEngine On
+
+# Remove .php extension from URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
+# Redirect to error.php for "Index of" directory listing
+Options -Indexes
+
+# Custom error page redirection
+ErrorDocument 403 /muscledepot/error.php
+ErrorDocument 404 /muscledepot/error.php
+
+# Handle directory requests
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.php !-f
+RewriteRule ^(.*)$ /muscledepot/error.php [L]
+
+
+<FilesMatch "^\.htaccess$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>

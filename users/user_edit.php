@@ -21,6 +21,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
         $contact_no=$row['contact_no'];
         $gender=$row['gender'];
         $user_type=$row['user_type'];
+        $membership_expiry=$row['membership_expiry'];
     }
 //  echo $firstname. $lastname;
 ?>
@@ -28,7 +29,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
 <div align=center>
     <div class="card mb-4 w-75">
         <div class="card-header">
-            ADD NEW USER
+            EDIT USER
         </div>
 
         <form method="post" action="<?=$form_location?>">
@@ -56,11 +57,14 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                 <option value="m">Male</option>
                 </select>
 
-                <select type="text" name="user_type" class="form-control form-control-user add-input" autocomplete=off required>
+                <select type="text" name="user_type"  id="user_type" class="form-control form-control-user add-input" autocomplete=off required>
                 <option value="">User type</option>
                 <option value="0">Admin</option>
                 <option value="1">Member</option>
+                <option value="2">Non-member</option>
                 </select>
+
+                <input type="date" name="membership_expiry" id="membership_expiry" value="<?=$membership_expiry?>" class="form-control form-control-user add-input" autocomplete=off placeholder="Membership expiry">
 
             </div>
 
@@ -94,6 +98,27 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
 
 </div>
 
+<script>
+  // Get references to the input elements
+  const user_type = document.getElementById('user_type');
+  const membership_expiry = document.getElementById('membership_expiry');
+
+  // Function to handle the user_type change event
+  function handleInputChange() {
+    // If user_type value is not equal to "1", hide membership_expiry; otherwise, display it
+    if (user_type.value !== '1') {
+        membership_expiry.style.display = 'none';
+    } else {
+        membership_expiry.style.display = 'inline-block';
+    }
+  }
+
+  // Attach the handleInputChange function to the user_type change event
+  user_type.addEventListener('change', handleInputChange);
+
+  // Call handleInputChange initially to set the initial state
+  handleInputChange();
+</script>
 <?php
 
 // echo base_url();

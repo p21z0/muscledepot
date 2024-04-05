@@ -11,5 +11,5 @@ echo "--------------------------------------------------------------------<br>";
 include("checker_user.php");
 echo "--------------------------------------------------------------------<br>";
 
-header("Location: ../users/index.php");
+// header("Location: ../users/index.php");
 ?>

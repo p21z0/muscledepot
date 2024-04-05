@@ -1,8 +1,8 @@
 <?php
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
 date_default_timezone_set("Asia/Singapore");
-include ("../users/checker_user.php");
-echo $now = date("Y-m-d H:i:s");
+include ("../checker/checker_user.php");
+// echo $now = date("Y-m-d H:i:s");
 ?>
 <!DOCTYPE html>
 <html lang="en">
