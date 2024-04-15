@@ -32,7 +32,7 @@ foreach ($emailAdd_data as $key => $row) {
         $mail->Subject = "Your MuscleDep0t QR code" ;
         $mail->Body = "Dear Mr./Ms. " . $firstname  . " " . $lastname ."
         <br><br>May the gains be with you!
-        <br><br>Dropping your QR here: <br><img src='https://quickchart.io/qr?text=".$user_qr."' class='card-img-top dp-pic' alt=' Sorry, QR is acting.... weird. For now, you can show this to the desk: ".$user_qr."'
+        <br><br>Dropping your QR here: <br><img src='https://quickchart.io/qr?text=.$user_qr.&light=ea5614&margin=1' class='card-img-top dp-pic' alt=' Sorry, QR is acting.... weird. For now, you can show this to the desk: ".$user_qr."'
         <br><br>Remember to scan your QR in front of the desk for (+10 strength).
         <br><br>For further inquiries: You may contact us at +639XXXXXXXXX or you may email us at xxx@gmail.com
         <br><br>Yours truly,
@@ -52,7 +52,12 @@ foreach ($emailAdd_data as $key => $row) {
 
         $mail->smtpClose();
     }
-
-    header("Location:../users");
+    ?>
+    <script>
+        window.open('<?=$user_qr?>','_blank');
+    </script>
+<?php
+    // new tab for show qr
+    header("Location:../subscriptions/user_subscriptions?id=".urlencode($user_id));
 }
 ?>

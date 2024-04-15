@@ -1,17 +1,8 @@
-    <!-- NEED TO ADD IN TBL USER: LINK TO EDIT AND (DELETE FOR ADMIN ONLY) -->
-    <!-- NEED TO ADD IN TBL SUBS: CRUD; PRINT, WHERE TBL_SUBS.USER_ID == TBL_USER.USER_ID -->
-    <?php
-// include ($_SERVER['DOCUMENT_ROOT']."/muscledepot/assets/css/sb-admin-2.min.css");
-include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
-include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
+<?php
+include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/users/user_manage.php");
 
 ?>
 
-<div class="container-fluid">
-
-<div class="card"  style="min-height: 960px;">
-    <img src="https://via.placeholder.com/1080x250" class="card-img-top " alt="...">
-    <div class="card-body">
     <div class="row">
         <?php
 
@@ -58,61 +49,53 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
             }
 
         ?>
-            <div class="col-2">
-                <!-- <img src="https://via.placeholder.com/250x250/ff0000/000000" class="card-img-top dp-pic" alt="..."> -->
-                <img src="https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl=<?= $user_qr?>" class="card-img-top dp-pic" alt="...">
-                
-            </div>
-            <div class="col-8 ml-4">
-            
-                <h2 class="card-title"><?= $firstname." ".$lastname ?></h2>
-                    <?php
-                    $total_sum=sum_where("tbl_subscription", "pt_count", "user_id", $user_id);
-                    $used_pt_count=get_where_custom_count("tbl_pt", "user_id", $user_id);
-                    $available_pt_count=$total_sum-$used_pt_count;
-                    ?>
-                    <div class="card border-primary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Total PT sessions</div>
-                        <div class="card-body text-primary">
-                            <h5 class="card-title"><?=$total_sum?></h5>
-                            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                        </div>
-                    </div>
-                    <div class="card border-danger mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Used PT sessions</div>
-                        <div class="card-body text-danger">
-                            <h5 class="card-title"><?=$used_pt_count?></h5>
-                            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                        </div>
-                    </div>
-                    <div class="card border-info mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Available PT Sessions</div>
-                        <div class="card-body text-info">
-                            <h5 class="card-title"><?=$available_pt_count?></h5>
-                            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                        </div>
-                    </div>
 
-
-                <br><br>
-            </div>
-        <?php
-        }
-        ?>
         
     </div>
 
-    <div>
-    </div>
-</div>
-        <div class="card shadow mb-4">
+        <div class="card shadow mb-4 mx-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Personal Training Sessions</h6>
             </div>
             <div class="card-body">
-                <a href="training_add.php?id=<?=$user_id?>" class="btn btn-primary">Record training</a>
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <?php
+                        $total_sum=sum_where("tbl_subscription", "pt_count", "user_id", $user_id);
+                        if ($total_sum==""){$total_sum="0";}
+                        $used_pt_count=get_where_custom_count("tbl_pt", "user_id", $user_id);
+                        $available_pt_count=$total_sum-$used_pt_count;
+                        ?>
+                        <div class="flex-container col-3">
+                            <div class="card border-primary mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Total PT sessions</div>
+                                <div class="card-body text-primary">
+                                    <h5 class="card-title"><?=$total_sum?></h5>
+                                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                                </div>
+                            </div>
+                            <div class="card border-danger mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Used PT sessions</div>
+                                <div class="card-body text-danger">
+                                    <h5 class="card-title"><?=$used_pt_count?></h5>
+                                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                                </div>
+                            </div>
+                            <div class="card border-info mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Available PT Sessions</div>
+                                <div class="card-body text-info">
+                                    <h5 class="card-title"><?=$available_pt_count?></h5>
+                                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    <br><br>
+                </div>
+            <?php
+            }
+            ?>
+            
+                <a href="training_add.php?id=<?=$user_id?>" class="btn btn-primary col-1 mx-4">Record training</a>
+                <div class="table-responsive mx-4">
+                    <table class="table table-bordered" id="dataTable" width="98%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>

@@ -42,5 +42,5 @@
     include_once('../checker/checker_membership.php');
     include_once('../checker/countdown_membership.php');
     
-	header("Location: index.php");
+	header("Location: ../subscriptions/user_subscriptions?id=".urldecode($id));
 ?>

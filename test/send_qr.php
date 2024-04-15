@@ -1,65 +1,65 @@
-<?php
-    session_start();
-
-    include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
-
-// $id = $_GET['id'];
-// echo $id;
-$table_name = "tbl_users";
-$get_userData = get_where_custom($table_name, 'user_id', '4');
-//fetch result and pass it  to an array
-foreach ($get_userData as $key => $row) {
-    $id = $row['user_id'];
-    // $email = $row['email_address'];
-    $email='egoalter413@gmail.com';
-    $firstname = $row['firstname'];
-    $lastname = $row['lastname'];
-    $user_qr = $row['user_qr'];
+<style>
+    /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+    .flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    position: relative;
     
-}
-date_default_timezone_set('Asia/Singapore');
-$xdate=date('M-d-Y');
-$xtime=date('h:i:sa');
+    }
 
-require ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/phpmailer/PHPMailer.php");
-require ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/phpmailer/SMTP.php");
-require ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/phpmailer/Exception.php");
+    /* This container is needed to position the front and back side */
+    .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    }
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+    /* Do an horizontal flip when you move the mouse over the flip box container */
+    .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+    }
 
-$mail = new PHPMailer();
+    /* Position the front and back side */
+    .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    }
 
-$mail->isSMTP();
-$mail->Host = "smtp.gmail.com";
-$mail->SMTPAuth = "true";
-$mail->SMTPSecure = "tls";
-$mail->Port = "587";
-$mail->Username = "21staltego@gmail.com";
-$mail->Password = "angj zqtr mzny dfqm";
-$mail->Subject = "Subscription Successful" ;
-$mail->setFrom("realmuscledepot@gmail.com");
-$mail->isHTML(true);
-$mail->Body = "Dear Mr./Ms. " . $firstname  . " " . $lastname ."
-<br><br>Good Day!
+    /* Style the front side (fallback if image is missing) */
+    .flip-card-front {
+    background-color: #bbb;
+    color: black;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    }
 
-<br><br>This is your QR Code for MuscleDep0t tracking:<br><img src='https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl='$user_qr?>
-<br><br>For further inquiries: You may contact us at +639XXXXXXXXX or you may email us at xxx@gmail.com
-<br><br>yours truly,
-<br>xxx
-<br><br>";
-$mail->addAddress($email);
+    /* Style the back side */
+    .flip-card-back {
+    background-color: dodgerblue;
+    color: white;
+    transform: rotateY(180deg);
+    }
+</style>
 
-if ($mail->Send() ) {
-    echo "Mail Send";
-    //  header("Location: index.php");
-}else{
-    echo "Error<br>". $mail->ErrorInfo;
-}
-
-echo $mail->Body;
-
-$mail->smtpClose();
-
-?>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="../img/cbum.jpeg" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <h1>John Doe</h1>
+      <p>Architect & Engineer</p>
+      <p>We love that guy</p>
+    </div>
+  </div>
+</div>

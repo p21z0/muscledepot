@@ -139,7 +139,14 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                             ?>
 
                                 <tr>
-                                    <td><?= $user_pic?></td>
+                                    <?php
+                                    if ($user_pic!=""){ ?>
+                                    <td><img class="rounded-circle shadow-4-strong" alt="avatar2" style="width: 50px; height: 50px;" src="../img/<?= $user_pic?>" /></td>
+                                    <?php }
+                                    else { ?>
+                                    <td><img class="rounded-circle shadow-4-strong" alt="avatar2" style="width: 50px; height: 50px;" src="../img/blank-profile.webp" /></td>
+                                    <?php }
+                                    ?>
                                     <!-- <td><?= $username?></td>
                                     <td><?= $user_type?></td> -->
                                     <td><?= $firstname." ".$lastname?></td>
@@ -164,11 +171,11 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                                 <i class="fa-solid fa-dumbbell"></i>
                                             </span>
                                             <span class="text">
-                                                Subscriptions
+                                                More details
                                             </span>
                                         </a>
 
-                                        <a href="../training/training_manage?id=<?= $user_id?>" class="btn btn-info btn-icon-split btn-md">
+                                        <!-- <a href="../training/training_manage?id=<?= $user_id?>" class="btn btn-info btn-icon-split btn-md">
                                             <span class="icon text-red-50">
                                                 <i class="fa-solid fa-dumbbell"></i>
                                             </span>
@@ -176,6 +183,15 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                                 Personal Training
                                             </span>
                                         </a>
+
+                                        <a href="user_picture?id=<?= $user_id?>" class="btn btn-secondary btn-icon-split btn-md">
+                                            <span class="icon text-red-50">
+                                                <i class="fa-solid fa-dumbbell"></i>
+                                            </span>
+                                            <span class="text">
+                                                Change Picture
+                                            </span>
+                                        </a> -->
 
                                         <a href="../mailing/send_qr_user?id=<?= $user_id?>" class="btn btn-dark btn-icon-split btn-md">
                                             <span class="icon text-red-50">
@@ -186,7 +202,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                             </span>
                                         </a>
 
-                                        <a href="user_edit?id=<?= $user_id?>" class="btn btn-warning btn-icon-split btn-md">
+                                        <!-- <a href="user_edit?id=<?= $user_id?>" class="btn btn-warning btn-icon-split btn-md">
                                         <span class="icon text-red-50">
                                         <i class="far fa-edit"></i>
                                         </span>
@@ -202,7 +218,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                             <span class="text">
                                                 Delete
                                             </span>
-                                        </a>
+                                        </a> -->
                                         
                                     </td>
                                 </tr>

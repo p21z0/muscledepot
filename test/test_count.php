@@ -1,11 +1,5 @@
 <?php
-
-$playerlist=array();
-if (!$playerlist) {
-    print_r($playerlist);
-}
-if (count($playerlist) === 0) {
-    echo "walang laman";
-}
-
+include_once ($_SERVER['SERVER_NAME']."/MuscleDepot/test/test_qr_1");
+echo "<br>";
+print_r($_SERVER['SERVER_NAME']);
 ?>

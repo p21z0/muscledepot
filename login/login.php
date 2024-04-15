@@ -27,12 +27,13 @@ session_start();
     <!-- <link href="template/css/main.css" rel="stylesheet"> -->
 
 </head>
-<div class="container-fluid" align=center style="height: 100%"> 
+<div class="container-fluid" align=center style="height: 100%;"> 
 
-    <div class="card shadow-lg" style="width: 45rem; margin: 3% 0% 3% 0%;">
-        <a href="https://placeholder.com"><img src="https://via.placeholder.com/720x540"></a>
+    <div class="card shadow-lg" style="width: 45rem; margin: 3% 0% 3% 0%; background: #ea5614; min-height:750px">
+        <img src="../img/MuscleDep0t_Logo_Logomark_White.png" alt="">
+        <!-- <a href="https://placeholder.com"><img src="https://via.placeholder.com/720x540"></a> -->
         <!-- <img src="assets/img/pexels-katerina-holmes-5905691.jpg" class="card-img-top crop-landing" alt="..."> -->
-        <div class="card-body">
+        <div class="card-body bg-white">
             <h2 class="card-title" style="color: #000;">School Events Management System</h2>
             <?php
                 if (isset($_SESSION['login'])){
