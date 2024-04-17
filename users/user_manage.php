@@ -178,7 +178,11 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                     <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-back">
+                            <?php if($user_pic!=""){ ?>
                             <img src="../img/<?=$user_pic?>" id="image1" class="card-img-top dp-pic rounded" style="width: 500px; height: 500px;" alt="...">
+                            <?php } else { ?>
+                            <img src="../img/blank-profile.webp" id="image1" class="card-img-top dp-pic rounded" style="width: 500px; height: 500px;" alt="...">
+                            <?php } ?>
                         </div>
                         <div class="flip-card-front">
                             <img src="../img/MuscleDep0t_Logo_Vertical Orientation_White.png" class="icon" style="width 10px;">
