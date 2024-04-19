@@ -10,7 +10,7 @@ $user_data = get_where_double($table_name, "username", $username, "user_type", "
 
     if ($user_data->num_rows != 0){
         foreach ($user_data as $key => $row) {
-            $password1 = _hash_string($row['password']);
+            $password1 = $row['password'];
             $firstname=$row['firstname'];
             $lastname=$row['lastname'];
             $user_type=$row['user_type'];//update
@@ -41,10 +41,11 @@ $user_data = get_where_double($table_name, "username", $username, "user_type", "
             }
             // echo $password1." ".$password;
             // echo $_SESSION['username'];
-            print_r($_SESSION);
+            // print_r($_SESSION);
         } 
     } else {
         // insert error message here
+        $_SESSION['login']=1;
         header("Location: login.php");
     }
     

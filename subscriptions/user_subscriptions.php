@@ -27,7 +27,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/users/user_manage.php");
                 </li>
             </ul>
             <br>
-
+            <a href="subscription_add?id=<?=$user_id?>" class="btn btn-primary">Add subscription</a>
 
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

@@ -23,9 +23,11 @@ include_once("../no_include.php");
         $mail->Subject = "Welcome to MuscleDep0t!" ;
         $mail->Body = "Dear Mr./Ms. " . $firstname  . " " . $lastname ."
         <br><br>Welcome to MuscleDep0t!
-        <br><br>Dropping your QR here: <br><img src='https://quickchart.io/qr?text=".$user_qr."' class='card-img-top dp-pic' alt=' Sorry, QR is acting.... weird. For now, you can show this to the desk: ".$user_qr."'
+        <br><br>Dropping your QR here: <br><img src='https://quickchart.io/qr?text=".$user_qr."&light=ea5614&margin=1' class='card-img-top dp-pic' alt=' Sorry, QR is acting.... weird. For now, you can show this to the desk: ".$user_qr."'
         <br><br>Remember to scan your QR in front of the desk for (+5 reps).
-        <br><br>For further inquiries: You may contact us at +639XXXXXXXXX or you may email us at xxx@gmail.com
+        <br><br>Your username: ".$username."
+        <br>Your temporary password is: <b>".$password."</b><br>Please remember to change your password.
+        <br><br>For further inquiries: You may contact us at +639XXXXXXXXX or you may email us at muscledep0t@gmail.com
         <br><br>Yours truly,
         <br>xxx
         <br><br>";

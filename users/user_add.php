@@ -46,7 +46,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                 <option value="2">Non-member</option>
                 </select>
 
-                <input type="date" name="membership_expiry" id="membership_expiry" class="form-control form-control-user add-input" autocomplete=off placeholder="Membership expiry" required>
+                <input type="date" name="membership_expiry" id="membership_expiry" class="form-control form-control-user add-input" autocomplete=off placeholder="Membership expiry">
 
             </div>
 

@@ -34,8 +34,9 @@ session_start();
         <!-- <a href="https://placeholder.com"><img src="https://via.placeholder.com/720x540"></a> -->
         <!-- <img src="assets/img/pexels-katerina-holmes-5905691.jpg" class="card-img-top crop-landing" alt="..."> -->
         <div class="card-body bg-white">
-            <h2 class="card-title" style="color: #000;">School Events Management System</h2>
+            <h2 class="card-title" style="color: #000;">MuscleDep0t Login</h2>
             <?php
+            // print_r($_SESSION);
                 if (isset($_SESSION['login'])){
                     if ($_SESSION['login']==1){
                         echo "

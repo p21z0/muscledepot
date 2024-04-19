@@ -25,7 +25,9 @@
     echo $user_qr = $today. "-" . $rand;
 
     //rand pass for 1st use generator
-    $tmp_pw=_hash_string(uniqid(0,8));
+    $tmp_pw_0=strtoupper(substr(uniqid(sha1(time())),0,6));
+    $tmp_pw=_hash_string($tmp_pw_0);
+    echo "<br>".$tmp_pw. " : ".$tmp_pw_0."<br>";
 
     //add check for repeated timezone+rand
 
@@ -64,25 +66,26 @@
         // Compare $email_address with items in array1
         foreach ($email_array as $item) {
             if ($email_address === $item) {
+                echo "email already in use";
                 $email_found = true;
-                // set session for alert here
+                // set session for alert here "EMAIL ALready used"
                 break; // Exit loop once a match is found
-                header("Location: index.php");
             }
         }
 
         // Compare $username with items in array1
-        foreach ($email_array as $item) {
+        foreach ($username_array as $item) {
             if ($username === $item) {
+                echo "username already in use";
                 $username_found = true;
-                // set session for alert here
+                // set session for alert here "Username"
                 break; // Exit loop once a match is found
-                header("Location: index.php");
             }
         }
 
         // Check if $email_address was found in email_array
         if ((!$email_found) and (!$username_found)) {
+            echo "go push";
             //passed
             echo insert($user_data, $table_name);
 
@@ -93,18 +96,16 @@
                 $user_id=$row['user_id'];
                 $user_pic=$row['user_pic'];
                 $username=$row['username'];
+                $password=$tmp_pw_0;
                 $user_type=$row['user_type'];
                 $firstname=$row['firstname'];
                 $lastname=$row['lastname'];
                 $birthdate=$row['birthdate'];
 
                 $gender=$row['gender'];
-        
+
                 include_once('../mailing/send_user_success.php');
             }
-            
-            //send success email alongside password
-            // head canon: new col in tbl_users (isOTP) to track if PW needs to be updated on login. 
 
             // add session for alert regarding success/fail
             header("Location: index.php");

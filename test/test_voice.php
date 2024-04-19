@@ -1,5 +1,4 @@
 <?php
-session_start();
 include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/perfect_function.php");
 date_default_timezone_set("Asia/Singapore");
 include ("../checker/checker_user.php");
@@ -100,6 +99,9 @@ include ("../checker/checker_user.php");
 
     const synth = window.speechSynthesis;
     let speech = new SpeechSynthesisUtterance();
+    // const voices = synth.getVoices();
+    // speech.voice = voices[8];
+    // speech.lang = "en-US";
               
     // Listen for the 'voiceschanged' event to ensure voices are loaded
     synth.onvoiceschanged = function() {
@@ -109,7 +111,6 @@ include ("../checker/checker_user.php");
         speech.voice = voices[randomIndex];
     };
 
-    // Check if there are cameras ready
     Instascan.Camera.getCameras().then(function(cameras){
       if(cameras.length>0){
         scanner.start(cameras[0]);
@@ -119,77 +120,25 @@ include ("../checker/checker_user.php");
     }).catch(function(e){
       console.error(e);
     });
-
-    // event listener whenever camera scans a QR
     scanner.addListener('scan', function(c){
       document.getElementById('text').value=c;
-        // Define the variable to pass to PHP
-        var valueToSend = document.getElementById('text').value;
-
-        // Send the data to PHP using AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "", true); // The empty string represents the current URL
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var responseData = xhr.responseText;
-
-                // Extract the value of the element with ID 'receivedData_x'
-                var receivedDataDiv = document.createElement('div');
-                receivedDataDiv.innerHTML = responseData;
-                var receivedData = receivedDataDiv.querySelector('#receivedData_x').innerText;
-                console.log("Received Data:", receivedData);
-
-                speech.text=receivedData;
-                synth.speak(speech);
-                speech.onend = function(event) {
-                  window.location.reload();
-                };
-
-            }
+    //   setTimeout("document.forms[0].submit();",3000);
+        speech.text="Hi Miguel! Welcome to Muscle Depot. Sheesh!";
+        synth.speak(speech);
+        speech.onend = function(event) {
+            // Reload the page after speech synthesis is completed
+            window.location.reload();
         };
-        xhr.send("data=" + encodeURIComponent(valueToSend));
-
     });
-    
   </script>
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["data"])) {
-    // Retrieve the data sent from JavaScript
-    $receivedData = $_POST["data"];
-    
-    $user_id_count=get_where_custom_count("tbl_users", "user_qr", $receivedData);
-    if($user_id_count>0){
-      $user_id_fetch=get_where_custom("tbl_users", "user_qr", $receivedData);
-      foreach($user_id_fetch as $key => $row){
-        $user_id=$row['user_id'];
-        $firstname=$row['firstname'];
-        $message = "Hi ".$firstname. ", your time in has been recorded. Welcome to Muscle Depot. Sheesh!";
-
-        $table_name = "tbl_timelogs";
-        $timelog_type = "time in";
-        $now_day = date("Y-m-d");
-        $now_hour = date("H:i:s");
-
-        $user_data=array(
-            "user_id" => $user_id ,
-            "reference" => $text ,
-            "timelog_type" => $timelog_type ,
-            "time_day" => $now_day ,
-            "time_hour" => $now_hour
-        );
-
-        insert($user_data, $table_name);
-      }
-    } elseif (($user_id_count<=0)){
-      $message = "Sorry, your QR is invalid. Please see any gym personnel for assistance";
-      $_SESSION['message_stat']=0;
-    }
-
-    echo "<div id='receivedData_x'>".$message."</div";
-}
-?>
-
+    <script>
+        
+        
+        
+    </script>
 </body>
 </html>
+
+
+  <!-- </body>
+</html> -->

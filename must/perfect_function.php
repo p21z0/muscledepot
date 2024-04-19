@@ -40,6 +40,14 @@ function get_where_custom($table_name, $column, $value)
 	return $result;
 }
 
+function get_where_custom_desc($table_name, $column, $value, $column2)
+{
+	$conn = getConnection();
+	$sql = "SELECT * FROM $table_name where ".$column."='".$value."' ORDER BY `$column2` DESC";
+	$result = $conn->query($sql);
+	return $result;
+}
+
 function get_where_double_and($table_name, $column1, $value1, $column2, $value2)
 {
 	$conn = getConnection();
@@ -176,10 +184,10 @@ function get_where_double($table_name, $col1, $value1, $col2, $value2)
 	return $result;
 }
 
-function get_where_triple($table_name, $col1, $value1, $col2, $value2, $col3, $value3, $col4)
+function get_where_triple($table_name, $col1, $value1, $col2, $value2, $col3, $value3)
 {
 	$conn = getConnection();
-	$sql = "SELECT DISTINCT $col4 FROM $table_name where $col1=$value1 and $col2=$value2 and $col3=$value3";
+	$sql = "SELECT * FROM $table_name where ".$col1."='".$value1."' and ".$col2."='".$value2."' and ".$col3."='".$value3."'";
 	$result = $conn->query($sql);
 	return $result;
 }
@@ -737,6 +745,8 @@ function get_desc($table_name, $column)
 	$result = $conn->query($sql);
 	return $result;
 }
+
+
 
 function get_startswith($table_name, $column, $value){
 	$conn = getConnection();

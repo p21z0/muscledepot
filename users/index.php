@@ -58,8 +58,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <!-- <th>Username</th>
-                                <th>User type</th> -->
+                                <th>Username</th>
                                 <th>Name</th>
                                 <th>Contact No.</th>
                                 <th>Email address</th>
@@ -72,8 +71,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                         <tfoot>
                             <tr>
                                 <th>&nbsp;</th>
-                                <!-- <th>Username</th>
-                                <th>User type</th> -->
+                                <th>Username</th>
                                 <th>Name</th>
                                 <th>Contact No.</th>
                                 <th>Email address</th>
@@ -147,8 +145,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                     <td><img class="rounded-circle shadow-4-strong" alt="avatar2" style="width: 50px; height: 50px;" src="../img/blank-profile.webp" /></td>
                                     <?php }
                                     ?>
-                                    <!-- <td><?= $username?></td>
-                                    <td><?= $user_type?></td> -->
+                                    <td><?= $username?></td>
                                     <td><?= $firstname." ".$lastname?></td>
                                     <!-- <td><?= $birthdate?></td> -->
                                     <td><?= $contact_no?></td>

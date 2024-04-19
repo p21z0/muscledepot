@@ -202,9 +202,9 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                             <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. -->
 
                         </p>
-                        <a href="subscription_add.php?id=<?=$user_id?>" class="btn btn-primary">Add subscription</a>
                         
-                        <a href="../subscriptions/user_subscriptions?id=<?= $user_id?>" class="btn btn-success btn-icon-split btn-md">
+                        
+                        <a href="../subscriptions/user_subscriptions?id=<?= $user_id?>" class="btn btn-success btn-icon-split btn-md mb-2">
                             <span class="icon text-red-50">
                                 <i class="fa-solid fa-dumbbell"></i>
                             </span>
@@ -213,7 +213,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                             </span>
                         </a>
 
-                        <a href="../training/training_manage?id=<?= $user_id?>" class="btn btn-info btn-icon-split btn-md">
+                        <a href="../training/training_manage?id=<?= $user_id?>" class="btn btn-info btn-icon-split btn-md mb-2">
                             <span class="icon text-red-50">
                                 <i class="fa-solid fa-dumbbell"></i>
                             </span>
@@ -222,7 +222,17 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                             </span>
                         </a>
 
-                        <a href="../users/user_picture?id=<?= $user_id?>" class="btn btn-secondary btn-icon-split btn-md">
+                        <a href="../timelogs/user_timelogs?id=<?= $user_id?>" class="btn btn-secondary btn-icon-split btn-md mb-2">
+                            <span class="icon text-red-50">
+                                <i class="fa-solid fa-dumbbell"></i>
+                            </span>
+                            <span class="text">
+                                Attendance
+                            </span>
+                        </a>
+                        <br>
+
+                        <a href="../users/user_picture?id=<?= $user_id?>" class="btn btn-dark btn-icon-split btn-md mb-2">
                             <span class="icon text-red-50">
                                 <i class="fa-solid fa-dumbbell"></i>
                             </span>
@@ -231,7 +241,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                             </span>
                         </a>
 
-                        <a href="../mailing/send_qr_user?id=<?= $user_id?>" class="btn btn-dark btn-icon-split btn-md" onclick=openInNewTab('https://quickchart.io/qr?text=<?=$user_qr?>&light=ea5614&margin=1&size=700')>
+                        <a href="../mailing/send_qr_user?id=<?= $user_id?>" class="btn btn-dark btn-icon-split btn-md mb-2" onclick=openInNewTab('https://quickchart.io/qr?text=<?=$user_qr?>&light=ea5614&margin=1&size=700')>
                             <span class="icon text-red-50">
                                 <i class="fa-solid fa-dumbbell"></i>
                             </span>
@@ -239,7 +249,7 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                 Send QR
                             </span>
                         </a>
-
+                        <br>
                         <a href="../users/user_edit?id=<?= $user_id?>" class="btn btn-warning btn-icon-split btn-md">
                             <span class="icon text-red-50">
                             <i class="far fa-edit"></i>
