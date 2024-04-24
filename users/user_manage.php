@@ -249,6 +249,15 @@ include ($_SERVER['DOCUMENT_ROOT']."/MuscleDepot/must/a.php");
                                 Send QR
                             </span>
                         </a>
+
+                        <a href="../mailing/send_new_pw?id=<?= $user_id?>"  class="btn btn-danger btn-icon-split btn-md mb-2">
+                            <span class="icon text-red-50">
+                                <i class="fa-solid fa-dumbbell"></i>
+                            </span>
+                            <span class="text">
+                                Change Password
+                            </span>
+                        </a>
                         <br>
                         <a href="../users/user_edit?id=<?= $user_id?>" class="btn btn-warning btn-icon-split btn-md">
                             <span class="icon text-red-50">
